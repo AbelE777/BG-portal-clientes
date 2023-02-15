@@ -8,31 +8,32 @@ export type Props = {
 };
 
 const Step1 = ({ onNext }: Props) => {
-  const { step, setStep } = useContext(AppContext);
-  const [isLoading, setIsLoading] = useState(false);
+  const { 
+    step, 
+    isLoading, 
+    setIsLoading,
+    setTimeLeft, 
+    timeLeft 
+  } = useContext(AppContext);
+  
 
-  const { setTimeLeft, timeLeft } = useContext(AppContext);
-
-  const handleSend = () => {
+  const handleSendCode = () => {
     setIsLoading(true);
-    localStorage.setItem("step", "2");
+    // localStorage.setItem("step", "2");
     localStorage.setItem("timeleft", "60");
     localStorage.setItem("otp", "123456");
     setTimeLeft(60);
     // setear el siguiente paso
     setTimeout(() => {
-      setStep("2");
+      // setStep("2");
       onNext();
       setIsLoading(false);
     }, 3000);
   };
 
-  if (step === "1") {
+  
     return (
       <div className="sm:w-2/4 mx-auto">
-        
-        {/* spinner */}
-        {isLoading && <Spinner />}
 
         <h3 className="text-2xl font-bold">Queremos mejorar tu experiencia</h3>
         <p className="">
@@ -57,7 +58,7 @@ const Step1 = ({ onNext }: Props) => {
 
           <button
             className="button m-5 active:bg-pink-600 focus:outline-none ease-linear transition-all duration-150"
-            onClick={handleSend}
+            onClick={handleSendCode}
           >
             Enviar
           </button>
@@ -68,7 +69,6 @@ const Step1 = ({ onNext }: Props) => {
     );
   }
 
-  return null;
-};
+  
 
 export default Step1;

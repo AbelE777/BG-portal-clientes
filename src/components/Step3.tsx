@@ -1,11 +1,18 @@
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import Spinner from "./Spinner";
 
 export default function Step3() {
 
-  const { step, setStep, setShowModal } = useContext(AppContext);
+  const { setShowModal, isLoading, setIsLoading } = useContext(AppContext);
 
-  const handleAceptar = () => setShowModal({showAs:'gracias', show:false})      
+  const handleAceptar = () => {
+    setIsLoading(true)
+    setTimeout(() => {
+      setShowModal({showAs:'gracias', show:true});
+      setIsLoading(false)
+    }, 1000);
+  }
 
   
     return (

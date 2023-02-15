@@ -1,17 +1,30 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../context/AppContext';
-import Modal from './Modal';
+import React, { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+import Modal from "./Modal";
 
 export default function TimeExpired() {
-  const {setShowModal, showModal} = useContext(AppContext);
+  const { setShowModal, showModal, handleGoBack } = useContext(AppContext);
+
+  const handleCancel = () => {
+    handleGoBack();
+  }
 
   return (
     <>
-    <div className='text-left mb-2 text-sm leading-4' style={{
-      color:'#d8046c'
-    }}>Tu código ha expirado, solicita uno nuevo.</div>
-      <div className="flex items-center text-gray-700 cursor-pointer" 
-        onClick={()=>{setShowModal({showAs:'info',show:true})}}>
+      <div
+        className="text-left mb-2 text-sm leading-4"
+        style={{
+          color: "#d8046c",
+        }}
+      >
+        Tu código ha expirado, solicita uno nuevo.
+      </div>
+      <div
+        className="flex items-center text-gray-700 cursor-pointer"
+        onClick={() => {
+          setShowModal({ showAs: "info", show: true });
+        }}
+      >
         No recibiste el código?
         <svg
           className="svg-icon ml-2"
@@ -31,14 +44,15 @@ export default function TimeExpired() {
       </div>
 
       <div className="flex justify-end pb-5 pt-4 space-x-2">
-        <button className="border-pink-600 border-4 bg-white text-pink-700">
+        <button 
+          className="border-pink-600 border-4 bg-white text-pink-700"
+          onClick={handleCancel}
+        >
           Cancelar
         </button>
-        <button className="button">
-          Enviar nuevo código
-        </button>
+        <button className="button">Enviar nuevo código</button>
       </div>
       {/* {showModal.show && <Modal />} */}
     </>
-  )
+  );
 }

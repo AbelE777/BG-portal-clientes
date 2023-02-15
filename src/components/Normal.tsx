@@ -9,14 +9,21 @@ type Props = {
 };
 
 const Normal = ({ handleCkeckOTP, intentos }: Props) => {
-  const {setShowModal, showModal} = useContext(AppContext);
+  const {setShowModal, showModal, handleGoBack} = useContext(AppContext);
+
+  const handleCancel = () => {
+    handleGoBack();
+  }
 
   return (
     <>
       <div className="text-gray-600 text-left">
         Tu código será válido por <Countdown /> minutos.
       </div>
-      <div className="flex items-center text-gray-700 cursor-pointer" onClick={()=>{setShowModal({show:true, showAs:'info'})}}>
+      <div 
+        className="flex items-center text-gray-700 cursor-pointer" 
+        onClick={()=>{setShowModal({show:true, showAs:'info'})}}
+      >
         No recibiste el código?
         <svg
           className="svg-icon ml-2"
@@ -41,7 +48,10 @@ const Normal = ({ handleCkeckOTP, intentos }: Props) => {
       }
 
       <div className="flex justify-end pb-5 pt-4 space-x-2">
-        <button className="border-pink-600 border-4 bg-white text-pink-700">
+        <button 
+          className="border-pink-600 border-4 bg-white text-pink-700"
+          onClick={handleCancel}
+        >
           Cancelar
         </button>
         <button className="button" onClick={handleCkeckOTP}>

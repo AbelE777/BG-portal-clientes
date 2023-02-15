@@ -11,13 +11,17 @@ import phoneIcon from "/phone-icon.png";
 const Step2 = ({onNext}:Props) => {
   const [otpValue, setOtpValue] = useState("");
   const [intentos, setIntentos] = useState(0);
-  const { setTimeLeft, timeLeft, step, setStep } = useContext(AppContext);
+  const { setTimeLeft, timeLeft, step, setIsLoading } = useContext(AppContext);
 
   function handleCkeckOTP() {
     const realOtp = localStorage.getItem("otp")!;
     if (realOtp && realOtp === otpValue) {
-      setStep("3");
-      onNext();
+      // setStep("3");
+      setIsLoading(true)
+      setTimeout(() => {
+        setIsLoading(false)
+        onNext();
+      }, 1000);
     }
     else if (intentos < 3) 
       setIntentos((prev) => prev + 1);
