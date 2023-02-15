@@ -1,17 +1,23 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import Spinner from "./Spinner";
 
 export default function Step3() {
 
   const { setShowModal, isLoading, setIsLoading } = useContext(AppContext);
+  const [tyc, setTyc] = useState({isCheck:false, showError:false});
 
   const handleAceptar = () => {
-    setIsLoading(true)
-    setTimeout(() => {
-      setShowModal({showAs:'gracias', show:true});
-      setIsLoading(false)
-    }, 1000);
+    if(tyc.isCheck) {
+      setIsLoading(true)
+      setTimeout(() => {
+        setShowModal({showAs:'gracias', show:true});
+        setIsLoading(false)
+      }, 1000);
+    }
+    else {
+      setTyc({...tyc, showError:true})
+    }
   }
 
   
@@ -88,12 +94,15 @@ export default function Step3() {
             </div>
           </div>
           <div className="w-full px-4">
-            <div className="relative w-full mb-3 mt-10 text-xs">
+            <div className="relative w-full mb-3 mt-10 sm:text-xs">
               <input
                 className=""
                 type="checkbox"
                 name="terminos_y_condiciones"
                 id="tyc"
+                checked={tyc.isCheck}
+                // onClick={()=>setTyc({isCheck:!tyc.isCheck, showError:false})}
+                onChange={()=>setTyc({isCheck:!tyc.isCheck, showError:false})}
               />{" "}
               <label htmlFor="tyc" className="font-semibold text-gray-700">
                 He leído y acepto los
@@ -105,6 +114,11 @@ export default function Step3() {
               </label>
             </div>
           </div>
+          
+          {tyc.showError &&
+           <small className="flex text-center justify-center text-pink-600 text-xm font-bold">Porfavor, acepta los terminos y condiciones.
+          </small>}
+          
           <div className="text-xs text-gray-600 text-center mt-8">
             Privacidad - Condiciones
           </div>

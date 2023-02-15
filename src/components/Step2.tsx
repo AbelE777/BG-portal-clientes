@@ -12,6 +12,22 @@ const Step2 = ({onNext}:Props) => {
   const [otpValue, setOtpValue] = useState("");
   const [intentos, setIntentos] = useState(0);
   const { setTimeLeft, timeLeft, step, setIsLoading } = useContext(AppContext);
+  const [classes, setClasses] = useState({
+    width: "3rem",
+    height: "3rem",
+    margin: "20px .3rem"
+  })
+
+  useEffect(() => {
+    if (window.matchMedia("(max-width:767px)").matches) {
+      setClasses({
+        width: "1.9rem",
+        height: "2rem",
+        margin: "20px .3rem"
+      })
+    }
+  }, [])
+  
 
   function handleCkeckOTP() {
     const realOtp = localStorage.getItem("otp")!;
@@ -60,9 +76,7 @@ const Step2 = ({onNext}:Props) => {
             numInputs={6}
             inputStyle={{
               color: "#919191",
-              width: "3rem",
-              height: "3rem",
-              margin: "20px .3rem",
+              ...classes,
               fontSize: "1.7rem",
               borderRadius: 4,
               border: `${
@@ -73,7 +87,7 @@ const Step2 = ({onNext}:Props) => {
               fontWeight: "600",
               backgroundColor: "#fff",
             }}
-            separator={<span className="text-gray-600">.</span>}
+            // separator={<span className="text-gray-600">.</span>}
           />
         </div>
 
