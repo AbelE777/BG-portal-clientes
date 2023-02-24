@@ -22,7 +22,7 @@ const Countdown = () => {
   const {setTimeLeft, timeLeft} = useContext(AppContext);
   const timerId = useRef(0);
 
-  console.log('rendered')
+  // console.log('rendered')
 
   // const [timeLeft, setTimeLeft] = useState(
   //   parseInt(localStorage.getItem('timeleft')!)
@@ -33,7 +33,7 @@ const Countdown = () => {
   }, [timeLeft]);
 
   useEffect(() => {
-    timerId.current = setInterval(() => { 
+    timerId.current = window.setInterval(() => { 
       setTimeLeft((prev:number) => prev - 1)
     }, 1000)
     

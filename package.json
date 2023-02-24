@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:development": "npx dotenv -e .env.development vite build",
+    "build:staging": "npx dotenv -e .env.staging npm run build",
+    "build:production": "npx dotenv -e .env.production npm run build"
   },
   "dependencies": {
     "animate.css": "^4.1.1",
@@ -15,10 +18,12 @@
     "react-otp-input": "^2.4.0"
   },
   "devDependencies": {
+    "@types/node": "^18.14.1",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.13",
+    "dotenv": "^16.0.3",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.3",

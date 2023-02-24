@@ -57,7 +57,7 @@ const Step2 = ({onNext}:Props) => {
 
       <img width={80} className="mx-auto mt-16" src={phoneIcon} alt="" />
 
-      <div className="sm:m-12 bg-slate-100 rounded-lg mt-16 py-6 px-8 animate__animated animate__fadeInDown animate__faster">
+      <div className="sm:m-12 bg-slate-100 rounded-lg mt-16 py-6 px-8 animate__animated animate__fadeInUp animate__faster">
         <h4 className="text-gray-700 font-bold py-5 text-xl">
           Ingresa tu código de seguridad
         </h4>

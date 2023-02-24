@@ -15,14 +15,14 @@ const Step1 = ({ onNext }: Props) => {
     setTimeLeft, 
     timeLeft 
   } = useContext(AppContext);
-  
+  console. log (process.env.NODE_ENV) 
 
   const handleSendCode = () => {
     setIsLoading(true);
     // localStorage.setItem("step", "2");
-    localStorage.setItem("timeleft", "60");
+    localStorage.setItem("timeleft", "180");
     localStorage.setItem("otp", "123456");
-    setTimeLeft(60);
+    setTimeLeft(180);
     // setear el siguiente paso
     setTimeout(() => {
       // setStep("2");
@@ -35,13 +35,13 @@ const Step1 = ({ onNext }: Props) => {
     return (
       <div className="sm:w-2/4 mx-auto">
 
-        <h3 className="text-2xl font-bold">Queremos mejorar tu experiencia</h3>
-        <p className="">
-          para autenticar que eres tú, enviaremos un sms a tu celular con un
-          código de seguridad
+        <h3 className="text-2xl font-bold animate__animated animate__fadeInUp animate__faster">Queremos mejorar tu experiencia</h3>
+        <p className="animate__animated animate__fadeInUp animate__faster">
+          Para autenticar que eres tú, enviaremos un sms a tu celular con un
+          código de seguridad.
         </p>
 
-        <div className="sm:m-12 bg-slate-100 rounded-lg mt-16 animate__animated animate__fadeInDown animate__faster">
+        <div className="sm:m-12 bg-slate-100 rounded-lg mt-16 animate__animated animate__fadeInUp">
           <div className="p-5">
             <img className="mx-auto mt-5" src={smsIcon} alt="" width={70} />
           </div>

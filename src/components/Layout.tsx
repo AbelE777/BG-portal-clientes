@@ -9,8 +9,8 @@ const Layout = ({children}:Props) => {
   
   return (
     <div className='m-5'>
-      <h1 className='font-bold'>Primero tú</h1>
-      <p className='w-3/4 sm:w-1/4 mt-3 mx-auto '>
+      <h1 className='font-bold animate__animated animate__fadeInUp animate__faster'>Primero tú</h1>
+      <p className='w-3/4 sm:w-1/4 mt-3 mx-auto animate__animated animate__fadeInUp animate__faster'>
         Nuestro compromiso es ofrecerte la mejor experiencia bancaria
       </p>
 
@@ -25,7 +25,7 @@ const Layout = ({children}:Props) => {
         <p className='text-xs'>Con el fin de mejorar tu experiencia bancaria y brindarte una atención
           personalizada, requerimos tu autorización para obtener tus datos 
           personales para ofrecete nuestros servicios, campañas promocionales 
-          y demás beneficios
+          y demás beneficios.
         </p>
       </div>
     </div>
