@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import OtpField from "react-otp-input";
+import OTPInput from "otp-input-react";
 import { AppContext } from "../context/AppContext";
 import Countdown from "./Countdown";
 import MaxIntentos from "./MaxIntentos";
@@ -67,14 +67,14 @@ const Step2 = ({onNext}:Props) => {
 
         {/* OTP */}
         <div className="flex items-center justify-center">
-          <OtpField
-            isDisabled={intentos === 3 || timeLeft === 0}
-            shouldAutoFocus={true}
-            isInputNum={true}
+          <OTPInput
+            disabled={intentos === 3 || timeLeft === 0}
+            autoFocus={true}
+            otpType="number"
             value={otpValue}
             onChange={setOtpValue}
-            numInputs={6}
-            inputStyle={{
+            OTPLength={6}
+            inputStyles={{
               color: "#919191",
               ...classes,
               fontSize: "1.7rem",
